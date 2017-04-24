@@ -1,0 +1,87 @@
+<div class="form-group">
+    <label for="tipoproducto">Tipo Producto</label>
+    <select
+        class="form-control"
+        name="tipoproducto"
+        ng-options="option.name for option in tipoproductos track by option.id"
+        ng-model="producto.tipoproducto"></select>
+</div>
+
+<div class="form-group">
+    <label for="presentacion">Presentación</label>
+    <input
+        type="text"
+        ng-model="producto.presentacion"
+        class="form-control"
+        name="presentacion"
+        placeholder="Presentación">
+</div>
+
+<div class="form-group">
+    <label for="codigo">Código</label>
+    <input
+        type="text"
+        ng-model="producto.codigo"
+        class="form-control"
+        name="codigo"
+        required
+        placeholder="Código">
+</div>
+
+<div class="form-group">
+    <label for="nombre">Nombre</label>
+    <input
+        type="text"
+        ng-model="producto.nombre"
+        class="form-control"
+        name="nombre"
+        required
+        placeholder="Nombre">
+</div>
+
+<div class="form-group">
+    <label for="cantidad">Cantidad</label>
+    <input
+        type="number"
+        ng-model="producto.cantidad"
+        class="form-control"
+        name="cantidad"
+        step=0.01
+        required
+        placeholder="Cantidad">
+</div>
+
+<div class="form-group">
+    <label for="costo">Costo</label>
+    <input
+        type="number"
+        ng-model="producto.costo"
+        class="form-control"
+        name="costo"
+        step=0.01
+        required
+        placeholder="Costo">
+</div>
+
+<div class="form-group">
+    <label for="peso">Peso</label>
+    <input
+        type="number"
+        ng-model="producto.peso"
+        class="form-control"
+        name="peso"
+        step=0.01
+        required
+        placeholder="Peso">
+</div>
+
+<div class="form-group">
+    <label for="modo">Modo</label>
+    <input
+        type="text"
+        ng-model="producto.modo"
+        class="form-control"
+        name="modo"
+        required
+        placeholder="Modo">
+</div>

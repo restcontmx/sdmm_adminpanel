@@ -1,0 +1,30 @@
+<div class="form-group">
+    <label for="nombre">Nombre</label>
+    <input
+        type="text"
+        ng-model="categoria.nombre"
+        class="form-control"
+        name="nombre"
+        required
+        placeholder="Nombre">
+</div>
+
+<div class="form-group">
+    <label for="nivel">Nivel</label>
+    <select
+        class="form-control"
+        name="nivel"
+        required
+        ng-options="option.nombre for option in niveles track by option.id"
+        ng-model="categoria.nivel"></select>
+</div>
+
+<div class="form-group">
+    <label for="procesominero">Proceso Minero</label>
+    <select
+        class="form-control"
+        name="procesominero"
+        required
+        ng-options="option.nombre for option in procesomineros track by option.id"
+        ng-model="categoria.procesominero"></select>
+</div>

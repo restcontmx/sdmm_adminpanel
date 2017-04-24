@@ -1,0 +1,40 @@
+<div class="form-group">
+    <label for="producto">Producto</label>
+    <select
+        class="form-control"
+        name="producto"
+        ng-options="option.nombre for option in productos track by option.id"
+        ng-model="presupuesto.producto"></select>
+</div>
+
+<div class="form-group">
+    <label for="presupuesto">Presupuesto</label>
+    <input
+        type="decimal"
+        ng-model="presupuesto.presupuesto"
+        class="form-control"
+        name="presupuesto"
+        step=0.01
+        required
+        placeholder="Presupuesto">
+</div>
+
+<div class="form-group">
+    <label for="stock">Stock</label>
+    <input
+        type="number"
+        ng-model="presupuesto.stock"
+        class="form-control"
+        name="stock"
+        required
+        placeholder="Stock">
+</div>
+
+<div class="form-group">
+    <label for="year">Año</label>
+    <select
+        class="form-control"
+        name="year"
+        ng-options="option for option in years track by option"
+        ng-model="presupuesto.year"></select>
+</div>

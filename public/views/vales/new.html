@@ -1,0 +1,234 @@
+<div ng-controller="vales-controller">
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#/vales"><i class="fa fa-users" aria-hidden="true"></i> Vales</a></li>
+        <li class="breadcrumb-item active"><i class="fa fa-plus-square" aria-hidden="true"></i> Nuevo</li>
+    </ol>
+
+    <h2 class="display-3">{{title}}</h2>
+    <br/>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-6">
+            <h5 class="lead"> <i class="fa fa-plus-square" aria-hidden="true"></i> Agregar nuevo Vale</h5>
+        </div>
+        <div class="col-md-5"></div>
+    </div>
+
+    <hr>
+
+    <form ng-submit="add()">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-outline-primary mb-3 text-left">
+                    <div class="card-header text-sm-center lead">
+                        Nuevo Vale
+                    </div>
+                    <div class="card-block">
+                        <div class="alert alert-danger" role="alert" ng-if="errors">
+                            <strong>Error al agregar objecto</strong>
+                            <p>{{errors}}</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="card card-outline-primary mb-3 text-left">
+                                    <div class="card-block">
+                                        <div class="form-group row">
+                                            <div class="col-md-4">
+                                                <label for="compania">Compañía</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <select
+                                                    class="form-control"
+                                                    name="compania"
+                                                    ng-options="option.nombre_comercial for option in proveedores track by option.id"
+                                                    ng-model="vale.compania"></select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-md-4">
+                                                <label for="autor">Elaboró</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <p class="lead">{{user_info.user.first_name}} {{user_info.user.second_name}}</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-md-4">
+                                                <label for="polvorero">Polvorero</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <select
+                                                    class="form-control"
+                                                    name="polvorero"
+                                                    ng-options="option.nombre for option in polvoreros track by option.id"
+                                                    ng-model="vale.polvorero"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="card card-outline-primary mb-3 text-left">
+                                    <div class="card-block">
+                                        <div class="form-group row">
+                                            <div class="col-md-4">
+                                                <label for="turno">Turno</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input
+                                                    type="text"
+                                                    ng-model="vale.turno"
+                                                    class="form-control"
+                                                    name="presentacion"
+                                                    placeholder="Turno">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-md-4">
+                                                <label for="autor">Fecha</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                {{todays_date}}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-md-4">
+                                                <label for="lugar">Lugar</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input
+                                                    type="text"
+                                                    ng-model="vale.lugar"
+                                                    class="form-control"
+                                                    name="lugar"
+                                                    placeholder="Lugar">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="card card-outline-primary mb-3 text-center">
+                                    <div class="card-block">
+                                        <div class="form-group row">
+                                            <div class="col-md-4">
+                                                <label for="cuenta">Cuenta</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input
+                                                    type="text"
+                                                    ng-model="vale.cuenta"
+                                                    class="form-control"
+                                                    name="cuenta"
+                                                    placeholder="Cuenta">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="button" class="btn btn-lg btn-danger" style="min-width:100%" ng-click="addDetail()">Nuevo Detalle</button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card card-outline-primary mb-3 text-center">
+                                    <div class="card-block">
+                                        <table class="table table-bordered table-hover">
+                                            <thead class="thead-inverse">
+                                                <tr>
+                                                    <th><i class="fa fa-asterisk" aria-hidden="true"></i>  Producto</th>
+                                                    <th style="width:15%"><i class="fa fa-asterisk" aria-hidden="true"></i>  Cantidad</th>
+                                                    <th class="text-sm-center"><i class="fa fa-trash" aria-hidden="true"></i></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="d in vale.detalles">
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <select
+                                                                class="form-control"
+                                                                name="detalle"
+                                                                required
+                                                                ng-options="option.nombre for option in productos track by option.id"
+                                                                ng-model="d.producto"></select>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group">
+                                                            <input
+                                                                type="number"
+                                                                ng-model="d.cantidad"
+                                                                class="form-control"
+                                                                name="cantidad"
+                                                                required
+                                                                placeholder="Cantidad">
+                                                        </div>
+                                                    </td>
+                                                    <td><button type="button" ng-click="delete_detail( d )" class="btn btn-outline-danger md-raised"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card card-outline-primary mb-3 text-center">
+                                    <div class="card-block">
+                                        <div class="form-group row">
+                                            <div class="col-md-6">
+                                                <label for="cargador2">Cargador 1</label>
+                                                <select
+                                                    class="form-control"
+                                                    name="cargador2"
+                                                    ng-options="option.nombre for option in cargadores track by option.id"
+                                                    ng-model="vale.cargador1"></select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="cargador2">Cargador 2</label>
+                                                <select
+                                                    class="form-control"
+                                                    name="cargador2"
+                                                    ng-options="option.nombre for option in cargadores track by option.id"
+                                                    ng-model="vale.cargador2"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group text-sm-left">
+                                    <a href="#/vales">
+                                        <button type="button" class="btn btn-danger"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> Cancelar</button>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group text-sm-right">
+                                    <button type="submit" class="btn btn-success"><i class="fa fa-plus-square" aria-hidden="true"></i> Agregar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

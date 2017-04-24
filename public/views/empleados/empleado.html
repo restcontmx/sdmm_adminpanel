@@ -1,0 +1,94 @@
+<div class="form-group">
+    <label for="afiliacion">Afiliación</label>
+    <input
+        type="text"
+        ng-model="empleado.afiliacion"
+        class="form-control"
+        name="afiliacion"
+        required
+        placeholder="Ailiación">
+</div>
+
+<div class="form-group">
+    <label for="tipoempleado">Tipo Empleado</label>
+    <select
+        class="form-control"
+        name="tipoempleado"
+        ng-options="option.name for option in tipo_empleados track by option.id"
+        ng-model="empleado.tipoempleado"></select>
+</div>
+
+<div class="form-group">
+    <label for="nombre">Nombre</label>
+    <input
+        type="text"
+        ng-model="empleado.nombre"
+        class="form-control"
+        name="nombre"
+        required
+        placeholder="Nombre">
+</div>
+
+<div class="form-group">
+    <label for="ap_paterno">Apellido Paterno</label>
+    <input
+        type="text"
+        ng-model="empleado.ap_paterno"
+        class="form-control"
+        name="ap_paterno"
+        required
+        placeholder="Apellido Paterno">
+</div>
+
+<div class="form-group">
+    <label for="ap_materno">Apellido Materno</label>
+    <input
+        type="text"
+        ng-model="empleado.ap_materno"
+        class="form-control"
+        name="ap_materno"
+        required
+        placeholder="Apellido Materno">
+</div>
+
+<div class="form-group">
+    <label for="nss">NSS</label>
+    <input
+        type="text"
+        ng-model="empleado.nss"
+        class="form-control"
+        name="nss"
+        required
+        placeholder="NSS">
+</div>
+
+<div class="form-group">
+    <label for="codigo">Código</label>
+    <input
+        type="text"
+        ng-model="empleado.codigo"
+        class="form-control"
+        name="codigo"
+        required
+        placeholder="Código">
+</div>
+
+<div class="form-group">
+    <label for="ingreso">Ingreso</label>
+    <input
+        type="text"
+        ng-model="empleado.ingreso"
+        class="form-control"
+        name="ingreso"
+        placeholder="Ingreso">
+</div>
+
+<div class="form-group">
+    <label for="salida">Salida</label>
+    <input
+        type="text"
+        ng-model="empleado.salida"
+        class="form-control"
+        name="salida"
+        placeholder="Salida">
+</div>

@@ -1,0 +1,51 @@
+<div  ng-controller="vales-controller">
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active"><i class="fa fa-list-alt" aria-hidden="true"></i> Vales</li>
+    </ol>
+
+    <h2 class="display-4">{{title}}</h2>
+
+    <br/>
+
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-7">
+            <h5 class="lead"> <i class="fa fa-list-ol" aria-hidden="true"></i> Listado de Vales</h5>
+        </div>
+        <div class="col-md-2">
+            <a href="#/vales/new"><button type="button" class="btn btn-secondary pull-right"><i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar nuevo</button></a>
+        </div>
+        <div class="col-md-2">
+            <input ng-model="search_text" ng-change="searchChange()" type="text" class="form-control" id="search" placeholder="Buscar...">
+        </div>
+    </div>
+
+    <hr>
+
+    <div ng-if="tb_vales">
+        <table class="table table-bordered table-hover">
+        <thead class="thead-inverse">
+            <tr>
+                <th style="width:15%"><i class="fa fa-asterisk" aria-hidden="true"></i>  ID</th>
+                <th style="width:15%"><i class="fa fa-asterisk" aria-hidden="true"></i>  Compañía</th>
+                <th><i class="fa fa-indent" aria-hidden="true"></i> Polvorero</th>
+                <th style="width:15%"><i class="fa fa-cube" aria-hidden="true"></i> Fecha</th>
+                <th class="text-sm-center"><i class="fa fa-pencil" aria-hidden="true"></i></th>
+                <th class="text-sm-center"><i class="fa fa-trash" aria-hidden="true"></i></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="v in tb_vales">
+                <td><a href="#/vales/detail/{{v.id}}"><p class="lead">{{v.id}}</p></a></td>
+                <td><p class="lead">{{v.compania.nombre_comercial}}</p></td>
+                <td><p class="lead">{{v.polvorero.nombre}}</p></td>
+                <td><p class="lead">{{v.timestamp}}</p></td>
+                <td><a href="#/vales/edit/{{p.id}}"><button type="button" class="btn btn-outline-primary"><i class="fa fa-pencil-square" aria-hidden="true"></i> Editar</button></a></td>
+                <td><button type="button" ng-click="delete( $event, p.id )" class="btn btn-outline-danger md-raised"><i class="fa fa-trash" aria-hidden="true"></i> Borrar</button></td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+
+</div>
