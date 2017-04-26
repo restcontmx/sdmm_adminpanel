@@ -37,7 +37,7 @@
         <tbody>
             <tr ng-repeat="c in tb_cuentas">
                 <td><p class="lead">{{c.id}}</p></td>
-                <td><a href="#/cuentas/detail/{{e.id}}"><p class="lead">{{c.nombre}}</p></a></td>
+                <td><a href="#/cuentas/detail/{{c.id}}"><p class="lead">{{c.nombre}}</p></a></td>
                 <td><p class="lead">{{c.numero}}</p></td>
                 <td><a href="#/cuentas/edit/{{c.id}}"><button type="button" class="btn btn-outline-primary"><i class="fa fa-pencil-square" aria-hidden="true"></i> Editar</button></a></td>
                 <td><button type="button" ng-click="delete( $event, c.id )" class="btn btn-outline-danger md-raised"><i class="fa fa-trash" aria-hidden="true"></i> Borrar</button></td>
