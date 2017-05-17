@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div  ng-controller="empleados-controller">
 
     <ol class="breadcrumb">
@@ -6,11 +7,25 @@
     </ol>
 
     <h2 class="display-3">{{title}}</h2>
+=======
+<div ng-controller="empleados-controller">
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#/empleados"><i class="fa fa-industry" aria-hidden="true"></i> Empleados</a></li>
+        <li class="breadcrumb-item active"><i class="fa fa-plus-square" aria-hidden="true"></i> Nuevo</li>
+    </ol>
+
+    <h2 class="display-4">{{title}}</h2>
+>>>>>>> e893b69141655642003449a282fc761c3e0017e4
     <br/>
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-6">
+<<<<<<< HEAD
             <h5 class="lead"> <i class="fa fa-pencil-square" aria-hidden="true"></i> Editar Empleado</h5>
+=======
+            <h5 class="lead"> <i class="fa fa-plus-square" aria-hidden="true"></i> Agregar nuevo Empleado</h5>
+>>>>>>> e893b69141655642003449a282fc761c3e0017e4
         </div>
         <div class="col-md-5"></div>
     </div>
@@ -22,11 +37,19 @@
         <div class="col-md-8">
             <div class="card card-outline-primary mb-3 text-left">
                 <div class="card-header text-sm-center lead">
+<<<<<<< HEAD
                     Editar
                 </div>
                 <div class="card-block">
                     <div class="alert alert-danger" role="alert" ng-if="errors">
                         <strong>Error al editar objecto</strong>
+=======
+                    Actualizar
+                </div>
+                <div class="card-block">
+                    <div class="alert alert-danger" role="alert" ng-if="errors">
+                        <strong>Error al agregar objecto</strong>
+>>>>>>> e893b69141655642003449a282fc761c3e0017e4
                         <p>{{errors}}</p>
                     </div>
                     <form ng-submit="update()">
@@ -45,10 +68,18 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group text-sm-right">
+<<<<<<< HEAD
                                     <button type="submit" class="btn btn-info"><i class="fa fa-pencil-square" aria-hidden="true"></i> Editar</button>
                                 </div>
                             </div>
                         </div>
+=======
+                                    <button type="submit" class="btn btn-success"><i class="fa fa-plus-square" aria-hidden="true"></i> Agregar</button>
+                                </div>
+                            </div>
+                        </div>
+
+>>>>>>> e893b69141655642003449a282fc761c3e0017e4
                     </form>
                 </div>
             </div>

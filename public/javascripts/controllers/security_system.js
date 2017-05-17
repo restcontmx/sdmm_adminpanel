@@ -109,6 +109,12 @@ app
                             icon : 'fa fa-th-list',
                             status : '',
                             link : '#/categorias'
+                        },
+                        {
+                            name : 'Cuentas',
+                            icon : 'fa fa-th-list',
+                            status : '',
+                            link : '#/cuentas'
                         }
                     ],
                     vales : [

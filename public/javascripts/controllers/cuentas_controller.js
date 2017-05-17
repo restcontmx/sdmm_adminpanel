@@ -1,6 +1,6 @@
 /**
-* Empleados Controller
-* Empleados repository
+* Niveles Controller
+* Niveles repository
 * @author : Ramiro Gutierrez Alaniz
 * @date : April 7th 2017
 **/
@@ -15,7 +15,7 @@ app
             remove : ( id ) => CRUDService.remove( model, id )
         });
     }])
-    .controller( 'cuentas-controller', [        '$scope',
+    .controller( 'cuentas-controller', [      '$scope',
                                                 '$rootScope',
                                                 '$routeParams',
                                                 '$location',
@@ -31,25 +31,32 @@ app
                                                             AuthRepository  ) {
         if( AuthRepository.viewVerification() ) {
             $scope.title = 'Cuentas';
-            $scope.message = "Este es el mensaje";
             var initCuenta = function() {
-                    $scope.cuenta = {};
+                    // Inits nivel
+                    $scope.cuenta =  {
+                    };
                 },
                 loadCuentas = function() {
-                    CuentaRepository.getAll().success(function( data ) {
+                    // load users with repository
+                    // If success then sets users with data
+                    CuentaRepository.getAll().success( function( data ) {
                         if( !data.error ) {
                             $scope.cuentas = data.data;
-                            $scope.tb_cuentas = data.data;
+                            $scope.tb_cuentas = $scope.cuentas;
                         } else {
                             $scope.errors = data.message;
                         }
-                    }).error(function(error){
+                    }).error( function( error ) {
                         $scope.errors = error;
                     });
-                };
-
+                },
+                isList = true; // Sets is list to true
+            // If there is an id param in the url
             if( $routeParams.id ) {
-                // Edit or Detail
+                // Sets list to false
+                isList = false;
+                // Gets user by id with the url id
+                // If success then sets nivel
                 CuentaRepository.getById( $routeParams.id ).success( function( data ) {
                     if( !data.error ) {
                         $scope.cuenta = data.data;
@@ -59,9 +66,14 @@ app
                 }).error( function( error ) {
                     $scope.errors = error;
                 });
-                $scope.update = function() {
-                    CuentaRepository.update( $scope.cuenta ).success( function() {
+
+                $scope.update = function( ) {
+                    // Reduces the rol model to just the id
+                    // updates the nivel on the repository
+                    // If success send it to the Niveles list
+                    CuentaRepository.update( $scope.cuenta ).success( function( data ) {
                         if( !data.error ) {
+                            $scope.message = data.message;
                             $location.path( '/cuentas/' );
                         } else {
                             $scope.errors = data.message;
@@ -70,23 +82,33 @@ app
                         $scope.errors = error;
                     });
                 };
+
             } else {
-                // list or create
+                // Set is list variable to true
+                //  load users and initialize user
+                isList = true;
                 loadCuentas();
+                initCuenta();
                 $scope.add = function() {
-                    CuentaRepository.create( $scope.cuenta ).success( function() {
+                    // Reduces the rol model to just the id
+                    // To send it to the repository
+                    // If success and no error send to niveles list
+                    CuentaRepository.add( $scope.cuenta ).success( function( data ) {
                         if( !data.error ) {
-                            $location.path( '/cuentas/' );
+                            $scope.message = data.message;
+                            $location.path( "/cuentas/" );
                         } else {
                             $scope.errors = data.message;
                         }
                     }).error( function( error ) {
                         $scope.errors = error;
                     });
+                }
+                $scope.searchChange = function() {
+                    $scope.tb_cuentas = $scope.cuentas.filter( p => p.nombre.includes( $scope.search_text ) );
                 };
             }
 
-            // func delete
             $scope.delete = function( e, id ) {
                 // This shows a modal dialog then if confirmation
                 // Deletes the model with the repository function

@@ -77,6 +77,8 @@ app
                 EmpleadoRepository.getById( $routeParams.id ).success( function( data ) {
                     if( !data.error ) {
                         $scope.empleado = data.data;
+                        $scope.empleado = $scope.auth_model.empleado;
+                        $scope.empleado.tipoempleado = $scope.auth_model.tipoempleado;
                     } else {
                         $scope.errors = data.message;
                     }
@@ -88,7 +90,11 @@ app
                     // Reduces the rol model to just the id
                     // updates the empleado on the repository
                     // If success send it to the Empleadoes list
+<<<<<<< HEAD
                     $scope.empleado.tipoempleado_id = $scope.empleado.tipo_empleado.id;
+=======
+                    $scope.empleado.tipoempleado = $scope.empleado.tipo_empleado.id;
+>>>>>>> e893b69141655642003449a282fc761c3e0017e4
                     EmpleadoRepository.update( $scope.empleado ).success( function( data ) {
                         if( !data.error ) {
                             $scope.message = data.message;
