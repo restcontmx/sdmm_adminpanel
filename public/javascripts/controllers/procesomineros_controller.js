@@ -98,7 +98,7 @@ app
                     ProcesoMineroRepository.add( $scope.procesominero ).success( function( data ) {
                         if( !data.error ) {
                             $scope.message = data.message;
-                            $location.path( "/procesomineros/" );
+                            $location.path( "/procesos/" );
                         } else {
                             $scope.errors = data.message;
                         }

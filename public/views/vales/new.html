@@ -123,12 +123,12 @@
                                                 <label for="cuenta">Cuenta</label>
                                             </div>
                                             <div class="col-md-8">
-                                                <input
-                                                    type="text"
-                                                    ng-model="vale.cuenta"
+                                                <select
                                                     class="form-control"
                                                     name="cuenta"
-                                                    placeholder="Cuenta">
+                                                    required
+                                                    ng-options="option.nombre for option in cuentas track by option.id"
+                                                    ng-model="vale.cuenta"></select>
                                             </div>
                                         </div>
                                     </div>
@@ -194,6 +194,7 @@
                                                     class="form-control"
                                                     name="cargador2"
                                                     ng-options="option.nombre for option in cargadores track by option.id"
+                                                    required
                                                     ng-model="vale.cargador1"></select>
                                             </div>
                                             <div class="col-md-6">

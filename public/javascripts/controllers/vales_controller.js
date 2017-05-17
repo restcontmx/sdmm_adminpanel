@@ -24,6 +24,7 @@ app
                                         'ProveedorRepository',
                                         'ProductoRepository',
                                         'EmpleadoRepository',
+                                        'CuentaRepository',
                                         'AuthRepository',
                                         function(   $scope,
                                                     $rootScope,
@@ -33,6 +34,7 @@ app
                                                     ProveedorRepository,
                                                     ProductoRepository,
                                                     EmpleadoRepository,
+                                                    CuentaRepository,
                                                     AuthRepository  ) {
 
         if( AuthRepository.viewVerification() ) {
@@ -52,15 +54,12 @@ app
                     // If success then sets vales with data
                     ValeRepository.getAll().success( function( data ) {
                         if( !data.error ) {
-                            console.log(data);
                             $scope.vales = data.data;
                             $scope.tb_vales = $scope.vales;
                         } else {
-                            console.log(data);
                             $scope.errors = data.message;
                         }
                     }).error( function( error ) {
-                        console.log(error);
                         $scope.errors = error;
                     });
                 },
@@ -103,10 +102,24 @@ app
                         $scope.errors = error;
                     });
                 },
+                loadCuentas = function() {
+                    // loads all cuentas with repository
+                    // if success then sets cuentas with data
+                    CuentaRepository.getAll().success( function( data ) {
+                        if( !data.error ) {
+                            $scope.cuentas = data.data;
+                        } else {
+                            $scope.errors = data.message;
+                        }
+                    }).error( function( error ) {
+                        $scope.errors = error;
+                    });
+                },
                 isList = true; // Sets is list to true
             loadProveedores();
             loadProductos();
             loadEmpleados();
+            loadCuentas();
             // If there is an id param in the url
             if( $routeParams.id ) {
                 // Sets list to false
@@ -146,19 +159,17 @@ app
                 isList = true;
                 loadVales();
                 initVale();
-                var today = new Date();
-                var dd = today.getDate();
-                var mm = today.getMonth()+1; //January is 0!
-                var yyyy = today.getFullYear();
-                if(dd<10) {
-                    dd='0'+dd
+                var today = new Date(),
+                    dd = today.getDate(),
+                    mm = today.getMonth()+1,
+                    yyyy = today.getFullYear();
+                if ( dd < 10 ) {
+                    dd = '0' + dd
                 }
-
-                if(mm<10) {
-                    mm='0'+mm
+                if ( mm < 10 ) {
+                    mm = '0' + mm
                 }
-
-                $scope.todays_date = mm+'/'+dd+'/'+yyyy;
+                $scope.todays_date = mm + '/' + dd + '/' + yyyy;
                 $scope.add = function() {
                     // Reduces the rol model to just the id
                     // To send it to the repository
@@ -167,10 +178,10 @@ app
                     $scope.vale.cargador1_id = $scope.vale.cargador1.id;
                     $scope.vale.cargador2_id = $scope.vale.cargador2.id;
                     $scope.vale.compania_id = $scope.vale.compania.id;
+                    $scope.vale.cuenta_id = $scope.vale.cuenta.id;
                     $scope.vale.detalles.forEach(function(d){
                         d.producto_id = d.producto.id;
                     });
-                    console.log($scope.vale);
                     ValeRepository.add( $scope.vale ).success( function( data ) {
                         if( !data.error ) {
                             $scope.message = data.message;
@@ -182,6 +193,7 @@ app
                         $scope.errors = error;
                     });
                 }
+
                 $scope.searchChange = function() {
                     $scope.tb_vales = $scope.vales.filter( p => p.nombre.includes( $scope.search_text ) );
                 };

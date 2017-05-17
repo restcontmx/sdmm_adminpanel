@@ -88,7 +88,7 @@ app
                     // Reduces the rol model to just the id
                     // updates the empleado on the repository
                     // If success send it to the Empleadoes list
-                    $scope.empleado.tipo_empleado = $scope.empleado.tipo_empleado.id;
+                    $scope.empleado.tipoempleado_id = $scope.empleado.tipo_empleado.id;
                     EmpleadoRepository.update( $scope.empleado ).success( function( data ) {
                         if( !data.error ) {
                             $scope.message = data.message;
@@ -111,7 +111,7 @@ app
                     // Reduces the rol model to just the id
                     // To send it to the repository
                     // If success and no error send to empleados list
-                    $scope.empleado.tipoempleado_id = $scope.empleado.tipoempleado.id;
+                    $scope.empleado.tipoempleado_id = $scope.empleado.tipo_empleado.id;
                     EmpleadoRepository.add( $scope.empleado ).success( function( data ) {
                         if( !data.error ) {
                             $scope.message = data.message;

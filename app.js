@@ -20,6 +20,7 @@ var presupuesto = require( './routes/presupuesto' );
 var categoria = require( './routes/categoria' );
 var vale = require( './routes/vale' );
 var cuenta = require( './routes/cuenta' );
+var vales_mobile = require( './routes/vales_mobile' );
 
 var app = express();
 
@@ -44,6 +45,7 @@ app.use( '/presupuesto', presupuesto );
 app.use( '/categoria', categoria );
 app.use( '/vale', vale );
 app.use( '/cuenta', cuenta );
+app.use( '/mobile/vale', vales_mobile );
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

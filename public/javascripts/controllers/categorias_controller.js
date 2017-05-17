@@ -15,7 +15,7 @@ app
             remove : ( id ) => CRUDService.remove( model, id )
         });
     }])
-    .controller( 'categorias-controller', [      '$scope',
+    .controller( 'categorias-controller', [     '$scope',
                                                 '$rootScope',
                                                 '$routeParams',
                                                 '$location',
@@ -79,6 +79,9 @@ app
                     });
                 },
                 isList = true; // Sets is list to true
+            loadCategorias();
+            loadNiveles();
+            loadProcesoMineros();
             // If there is an id param in the url
             if( $routeParams.id ) {
                 // Sets list to false
@@ -99,6 +102,8 @@ app
                     // Reduces the rol model to just the id
                     // updates the categoria on the repository
                     // If success send it to the Categoriaes list
+                    $scope.categoria.nivel_id = $scope.categoria.nivel.id;
+                    $scope.categoria.procesominero_id = $scope.categoria.procesominero.id;
                     CategoriaRepository.update( $scope.categoria ).success( function( data ) {
                         if( !data.error ) {
                             $scope.message = data.message;
@@ -115,9 +120,6 @@ app
                 // Set is list variable to true
                 //  load users and initialize user
                 isList = true;
-                loadCategorias();
-                loadNiveles();
-                loadProcesoMineros();
                 initCategoria();
                 $scope.add = function() {
                     // Reduces the rol model to just the id

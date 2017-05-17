@@ -1,7 +1,7 @@
-<div  ng-controller="empleados-controller">
+<div  ng-controller="niveles-controller">
 
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#/empleados"><i class="fa fa-industry" aria-hidden="true"></i> Empleados</a></li>
+        <li class="breadcrumb-item"><a href="#/niveles"><i class="fa fa-industry" aria-hidden="true"></i> Niveles</a></li>
         <li class="breadcrumb-item active"><i class="fa fa-pencil-square" aria-hidden="true"></i> Editar</li>
     </ol>
 
@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-6">
-            <h5 class="lead"> <i class="fa fa-pencil-square" aria-hidden="true"></i> Editar Empleado</h5>
+            <h5 class="lead"> <i class="fa fa-pencil-square" aria-hidden="true"></i> Editar Nivele</h5>
         </div>
         <div class="col-md-5"></div>
     </div>
@@ -31,14 +31,14 @@
                     </div>
                     <form ng-submit="update()">
                         <div class="row">
-                            <div ng-include="'/views/empleados/empleado.html'"></div>
+                            <div ng-include="'/views/niveles/nivel.html'"></div>
                         </div>
                         <br>
                         <hr>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group text-sm-left">
-                                    <a href="#/empleados">
+                                    <a href="#/niveles">
                                         <button type="button" class="btn btn-danger"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> Cancelar</button>
                                     </a>
                                 </div>

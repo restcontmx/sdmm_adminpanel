@@ -3,8 +3,8 @@ var http = require( 'http' );
 * application global info for api connection
 **/
 var g_opts = {
-    hostname : 'localhost:36594',
-    api_uri : 'http://localhost:36594/api/',
+    hostname : 'capstoneapitest.com:36594',
+    api_uri : 'http://capstoneapitest.com:36594/api/',
     port : '36594',
     token : 'Y3Bzd2ViYXBwOndlYmFwcDEyMw=='
 };

@@ -20,7 +20,7 @@ app
                                                 '$routeParams',
                                                 '$location',
                                                 '$mdDialog',
-                                                'CuentaRepository'
+                                                'CuentaRepository',
                                                 'AuthRepository',
                                                 function(   $scope,
                                                             $rootScope,
